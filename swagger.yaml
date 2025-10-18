@@ -1,0 +1,72 @@
+basePath: /
+consumes:
+    - application/json
+host: localhost:8080
+info:
+    contact:
+        email: ozgraltg@gmail.com
+        name: Ozgur Altug
+        url: https://linkedin.com/in/raltug
+    description: This is a sample recipes API.
+    title: Recipes API
+    version: 1.0.0
+paths:
+    /recipes:
+        get:
+            description: Returns list of recipes
+            operationId: listRecipes
+            produces:
+                - application/json
+            tags:
+                - recipes
+        post:
+            description: Create a new recipe
+            operationId: newRecipe
+            produces:
+                - application/json
+            tags:
+                - recipes
+    /recipes/{id}:
+        delete:
+            description: Deletes a recipe
+            operationId: deleteRecipe
+            parameters:
+                - description: ID of the recipe to delete
+                  in: path
+                  name: id
+                  required: true
+                  type: string
+            tags:
+                - recipes
+        put:
+            description: Update an existing recipe
+            operationId: updateRecipe
+            parameters:
+                - description: ID of the recipe
+                  in: path
+                  name: id
+                  required: true
+                  type: string
+            produces:
+                - application/json
+            tags:
+                - recipes
+    /recipes/search:
+        get:
+            description: Search for recipes by tag
+            operationId: searchRecipes
+            parameters:
+                - description: Tag to search for
+                  in: query
+                  name: tag
+                  required: true
+                  type: string
+            produces:
+                - application/json
+            tags:
+                - recipes
+produces:
+    - application/json
+schemes:
+    - http
+swagger: "2.0"
